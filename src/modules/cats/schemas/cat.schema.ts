@@ -1,5 +1,4 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Exclude, Expose, Transform } from 'class-transformer';
 import { Document } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -27,7 +26,7 @@ CatSchema.pre<CatDocument>('save', function () {
 });
 
 CatSchema.set('toJSON', {
-  transform: (doc, ret, options) => {
+  transform: (doc, ret) => {
     delete ret.__v;
     // delete ret._id;
   },

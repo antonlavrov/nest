@@ -5,9 +5,9 @@ import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 import { Cat, CatDocument } from './schemas/cat.schema';
 
-@Injectable({ scope: Scope.DEFAULT })
+@Injectable()
 export class CatsService {
-  constructor(@InjectModel('Cat') private readonly catModel: Model<CatDocument>) {}
+  constructor(@InjectModel(Cat.name) private readonly catModel: Model<CatDocument>) {}
 
   async findAll(): Promise<Cat[]> {
     return this.catModel.find();
@@ -24,8 +24,7 @@ export class CatsService {
 
   async update(id: string, updateCatDto: UpdateCatDto): Promise<Cat> {
     const catModel = await this.catModel.findById({ _id: id });
-    catModel.breed = 'black';
-    return catModel.save();
+    return catModel.update(updateCatDto);
   }
 
   async delete(id: string): Promise<any> {

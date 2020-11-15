@@ -6,7 +6,7 @@ import { Module } from '@nestjs/common';
 import { MongodbConfigModule } from 'src/config/database/mongodb/configuration.module';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'Cat', schema: CatSchema }]), MongodbConfigModule],
+  imports: [MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }]), MongodbConfigModule],
   controllers: [CatsController],
   providers: [CatsService],
 })
