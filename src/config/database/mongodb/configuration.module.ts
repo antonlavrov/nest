@@ -14,7 +14,7 @@ import { MongodbConfigService } from './configuration.service';
         MONGODB_USER: Joi.string().allow(''),
         MONGODB_PASSWORD: Joi.string().allow(''),
         MONGODB_NAME: Joi.string().allow(''),
-        MONGODB_SRV: Joi.boolean().truthy('true').falsy('false').sensitive(),
+        MONGODB_SRV: Joi.string().default('false'),
       }),
     }),
   ],

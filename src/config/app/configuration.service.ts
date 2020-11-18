@@ -20,4 +20,16 @@ export class AppConfigService {
   get port(): number {
     return Number(this.configService.get<number>('app.port'));
   }
+
+  get secret(): string {
+    return this.configService.get<string>('app.secret');
+  }
+
+  get sessionMaxAge(): number {
+    return Number(this.configService.get<number>('app.session_max_age'));
+  }
+
+  get apiDebug(): boolean {
+    return this.configService.get<string>('app.api_debug') === 'true';
+  }
 }
